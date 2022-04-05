@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 class RunnerTest {
     private lateinit var driver: ChromeDriver
 
-    private val webLink: String = "https://tradingsystem-dev.tecman.ru/"
+    private val webLink: String = "http://trading.swesus.com/"
 
     @Before
     fun singUp() {
@@ -30,11 +30,9 @@ class RunnerTest {
     @Test
     fun check() {
         driver.get(webLink)
-        var exm: WebElement =
-            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/input[1]")) // Поле с логином
+        var exm: WebElement = driver.findElement(By.xpath("//input[@id='login']")) // Поле с логином
         exm.sendKeys("admin")
-        exm =
-            driver.findElement(By.xpath("//body/div[@id='app']/div[1]/form[1]/div[2]/div[2]/div[1]/div[1]/input[1]")) // Поле с паролем
+        exm = driver.findElement(By.xpath("//input[@id='password']")) // Поле с паролем
         exm.sendKeys("Lh4iX9NkwLeuWw%u")
         exm = driver.findElement(By.xpath("//span[contains(text(),'Войти')]")) // Кнопка войти
         exm.click()

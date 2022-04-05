@@ -20,7 +20,7 @@ class checkTime {
         val request = Request.Builder()
             .url(webLink + "api/signals/ao_signals/?symbol=1&ordering=order")
             .addHeader("Accept", "application/json")
-            .addHeader("Authorization", "Token 27ffd22b217a7e14d9a493f04afbd5db00defcf4")
+            .addHeader("Authorization", "Token 54f94af4b3f803e89f31d218f59d8c04beb3c97d")
             .build()
         client.newCall(request).execute().use { response ->
             println(response)
