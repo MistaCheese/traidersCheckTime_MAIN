@@ -29,7 +29,9 @@ class checkTime {
             val listAll = JSONObject(response.body()?.string()).get("results") as JSONArray// Общий ответ от стенда c ТФ
             val users = File("users_id.txt") // Список ID пользователей с телеги
             val logStat = File(LocalDate.now().toString() + " logStat.txt") // Файл с логами
+            var j = 0
             for (i in listAll) { // Проверка, что смотрим часовой ТФ
+                ++j
                 if (JSONObject(JSONObject(i.toString()).get("timeframe").toString()).get("timeframe").equals("1h")) {
                     val timeForResponse =
                         (JSONObject(i.toString()).get("update_stamp")).toString().replace(".", "").substring(0, 13)
@@ -88,7 +90,7 @@ class checkTime {
                         )
                     }
                     break
-                } else {
+                } else if(j == listAll.length() ){
                     println("Часовой ТФ в запросе со стенда не обнаружен")
                     Assert.fail("Часовой ТФ в запросе со стенда не обнаружен")
                 }
